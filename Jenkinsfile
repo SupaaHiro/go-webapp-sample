@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Development') {
       steps {
-        git branch: 'main', url: 'https://github.com/SupaaHiro/go-webapp-sample.git', credentialsId: 'GH_PAT'
+        git branch: 'main', url: 'https://github.com/SupaaHiro/go-webapp-sample.git', credentialsId: 'ci-bot'
         sh 'go test ./...'
         echo sh(returnStdout: true, script: 'env')
       }
