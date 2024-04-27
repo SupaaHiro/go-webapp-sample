@@ -22,7 +22,10 @@ pipeline {
     stage('Build image') {
       steps {
         script {
-          app = docker.build('supaahiro/go-webapp-sample')
+          docker.withRegistry('https://docker.io', 'docker-pat') {
+            def customImage = docker.build("supaahiro/go-webapp-sample:${env.BUILD_ID}")
+            customImage.push()
+          }
         }        
       }
     }
