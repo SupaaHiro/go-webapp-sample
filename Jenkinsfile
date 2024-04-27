@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   tools {
-    go 'go-1.22'
+    go 'go-1.22.2'
   }
 
   environment {
@@ -10,7 +10,7 @@ pipeline {
   }
 
   stages {
-    stage('Test') {
+    stage('Development') {
       steps {
         git 'https://github.com/SupaaHiro/go-webapp-sample.git'
         sh 'go test ./...'
