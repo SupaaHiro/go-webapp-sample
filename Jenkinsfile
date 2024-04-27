@@ -7,6 +7,7 @@ pipeline {
 
   environment {
     GO111MODULE='on'
+    TEST_A_SECRET = credentials('test')
   }
 
   stages {
@@ -14,6 +15,7 @@ pipeline {
       steps {
         git branch: 'main', url: 'https://github.com/SupaaHiro/go-webapp-sample.git', credentialsId: 'ci-bot'
         sh 'go test ./...'
+        echo sh(returnStdout: true, script: 'env')
       }
     }
   }
