@@ -18,5 +18,13 @@ pipeline {
         echo sh(returnStdout: true, script: 'env')
       }
     }
+
+    stage('Build image') {
+      steps {
+        script {
+          app = docker.build('supaahiro/go-webapp-sample')
+        }        
+      }
+    }
   }
 }
