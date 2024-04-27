@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Development') {
       steps {
-        git 'https://github.com/SupaaHiro/go-webapp-sample.git'
+        git branch: 'main', url: 'https://github.com/SupaaHiro/go-webapp-sample.git'
         sh 'go test ./...'
       }
     }
