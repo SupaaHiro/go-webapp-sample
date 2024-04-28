@@ -1,5 +1,6 @@
 pipeline {
-  agent any
+  /* agent any */
+  agent { label 'docker' }
 
   tools {
     go 'go-1.22.2'
