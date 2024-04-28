@@ -11,21 +11,38 @@ pipeline {
   }
 
   stages {
-    stage('Run tests') {
+    stage('Checkout') {
       steps {
         git branch: 'main', credentialsId: 'ci-bot', url: 'https://github.com/SupaaHiro/go-webapp-sample.git'
+      }
+    }
+
+    stage('Run tests') {
+      steps {
         sh 'go test ./...'
       }
     }
 
     stage('Build image') {
-      app = docker.build('supaahiro/go-webapp-sample')
+      steps {
+        script {
+          dockerImage = docker.build('supaahiro/go-webapp-sample')
+        }
+      }
     }
     
     stage('Push image') {
-      docker.withRegistry('https://docker.io', 'docker-pat') {
-       app.push('${env.BUILD_NUMBER}')
-       app.push('latest')       
+      environment {
+        registryUrl = 'https://registry.hub.docker.com'
+        registryCredential = 'docker-pat'
+      }
+      steps {
+        script {
+          docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+            dockerImage.push('${env.BUILD_NUMBER}')
+            dockerImage.push('latest')       
+          }
+        }
       }
     }
   }
