@@ -1,7 +1,13 @@
 pipeline {
   /* agent any */
-  agent { label 'docker' }
-
+  // agent { label 'docker' }
+  agent {
+    docker {
+      image 'supaahiro/jenkins-docker-agent'
+      label 'docker'
+    }
+  }
+  
   tools {
     go 'go-1.22.2'
   }
