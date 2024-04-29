@@ -14,13 +14,26 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        echo "Running ${env.BUILD_ID} on ${env.NODE_NAME}"
         git branch: 'main', credentialsId: 'ci-bot', url: 'https://github.com/SupaaHiro/go-webapp-sample.git'
       }
     }
 
-    stage('Run tests') {
+    stage('Test') {
       steps {
         sh 'go test ./...'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'go build .'
+      }
+    }
+
+    stage('Run') {
+      steps {
+        sh "cd /var/lib/jenkins/workspace/${env.JOB_BASE_NAME} && go-webapp-sample &"
       }
     }
 
