@@ -1,8 +1,6 @@
 module github.com/ybkuroki/go-webapp-sample
 
-go 1.23
-
-toolchain go1.23.0
+go 1.23.1
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751

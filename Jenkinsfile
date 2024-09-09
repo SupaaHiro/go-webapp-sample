@@ -3,7 +3,7 @@ pipeline {
   agent { label 'docker' }
   
   tools {
-    go 'go-1.23.0'
+    go 'go-1.23.1'
   }
   
   environment {
