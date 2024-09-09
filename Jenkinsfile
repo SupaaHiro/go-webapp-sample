@@ -3,7 +3,7 @@ pipeline {
   agent { label 'docker' }
   
   tools {
-    go 'go-1.22.2'
+    go 'go-1.23.0'
   }
   
   environment {
@@ -15,7 +15,8 @@ pipeline {
     stage('Checkout') {
       steps {
         echo "Running ${env.BUILD_ID} on ${env.NODE_NAME}"
-        git branch: 'main', credentialsId: 'ci-bot', url: 'https://github.com/SupaaHiro/go-webapp-sample.git'
+        git branch: 'main', credentialsId: 'ci-bot', url: 'https://github.com/SupaaHiro/go-webapp-sample.git'        
+        sh 'go mod tidy'
       }
     }
 
