@@ -20,9 +20,9 @@ require (
 	github.com/swaggo/swag v1.16.4
 	github.com/valyala/fasttemplate v1.2.2
 	go.uber.org/zap v1.27.0
-	golang.org/x/crypto v0.31.0
+	golang.org/x/crypto v0.32.0
 	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	gopkg.in/boj/redistore.v1 v1.0.0-20160128113310-fc113767cd6b
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
